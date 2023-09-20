@@ -22,7 +22,7 @@ void init(t_cub3d *cub3d, char *av)
 	cub3d = malloc(sizeof(t_cub3d));
 	cub3d->mlx = NULL;
 	cub3d->window = NULL;
-	cub3d->map_datas = NULL;
+	cub3d->map_datas = (char **) malloc(6 * sizeof(char *));
 	cub3d->map = NULL;
 	cub3d->tmp_map = NULL;
 	cub3d->data_len = 0;

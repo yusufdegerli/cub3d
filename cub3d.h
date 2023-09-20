@@ -26,7 +26,9 @@ typedef struct s_cub3d
 void	init(t_cub3d *cub3d, char *av);
 int		try_escape(int keycode, t_cub3d *cub3d);
 void	init2(t_cub3d *cub3d);
-int		data_ctl(char *file_name, t_cub3d *cub3d);
+int		data_chck(char *file_name);
+char	*data_ctl(char *file_name, t_cub3d *cub3d, int fd);
 void	extension_ctl(char *extension);
 void	map_ctl(char *file_name, t_cub3d *cub3d);
+// void	map_chck(char *file_name, t_cub3d *cub3d);
 #endif
