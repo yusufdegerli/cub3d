@@ -6,7 +6,7 @@
 /*   By: okandemi <okandemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:17:57 by ydegerli          #+#    #+#             */
-/*   Updated: 2023/10/04 16:27:52 by okandemi         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:19:37 by okandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,7 @@ void	free_cub3d_map(t_cub3d *cub3d);
 void	init(t_cub3d *cub3d, char *av);
 void	error_data_ctl(t_cub3d *cub3d);
 void	taking_pics(t_cub3d *cub3d);
+int		create_trgb(int t, int r, int g, int b);
 void	extension_ctl(char *extension);
 void	ft_newline_ctrl(t_cub3d *cub3d);
 void	draw_pause(t_cub3d *cub3d, int color);

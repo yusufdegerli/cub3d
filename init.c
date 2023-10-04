@@ -6,7 +6,7 @@
 /*   By: okandemi <okandemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:23:00 by ydegerli          #+#    #+#             */
-/*   Updated: 2023/10/04 14:35:05 by okandemi         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:49:05 by okandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,65 @@ int	ft_loop(t_cub3d *cub3d)
 	return (1);
 }
 
+void	color_ctl(t_cub3d *cub3d)
+{
+	int		i;
+	char	c;
+
+	i = -1;
+	while (cub3d->map_info->c[++i] && cub3d->map_info->c[i] != '\n')
+	{
+		c = cub3d->map_info->c[i];
+		//printf("c: -%c-\n",c);
+		if (c != ',' && !ft_isdigit(c))
+		{	
+			system("leaks cub3D");
+			exit(printf("ERROR: WRONG MAP INFO\n"));
+		}
+		
+	}
+
+	i = -1;
+	while (cub3d->map_info->f[++i] && cub3d->map_info->f[i] != '\n')
+	{
+		c = cub3d->map_info->f[i];
+		//printf("c: -%c-\n",c);
+		if (c && c != ',' && !ft_isdigit(c))
+		{	
+			system("leaks cub3D");
+			exit(printf("ERROR: WRONG MAP INFO\n"));}
+		//printf("c: -%c-\n",c);
+	}
+	
+}
+
+void	get_color(t_cub3d *cub3d)
+{
+	int		i;
+	char	**a;
+
+	a = ft_split(cub3d->map_info->f, ',');
+
+	cub3d->floor.r = ft_atoi(a[0]);
+	cub3d->floor.g = ft_atoi(a[1]);
+	cub3d->floor.b = ft_atoi(a[2]);
+	i = -1;
+	while (a[++i])
+		free(a[i]);
+	free(a);
+
+	a = ft_split(cub3d->map_info->c, ',');
+
+	cub3d->sky.r = ft_atoi(a[0]);
+	cub3d->sky.g = ft_atoi(a[1]);
+	cub3d->sky.b = ft_atoi(a[2]);
+	i = -1;
+	while (a[++i])
+		free(a[i]);
+	free(a);
+	color_ctl(cub3d);
+}
+
 void	init(t_cub3d *cub3d, char *av)
 {
 	cub3d = (t_cub3d *) ft_calloc(sizeof(t_cub3d), 1);
@@ -105,6 +164,7 @@ void	init(t_cub3d *cub3d, char *av)
 	cub3d->mlx = mlx_init();
 	cub3d->window = mlx_new_window(cub3d->mlx, WIDTH, HEIGHT, "Cub3D");
 	taking_pics(cub3d);
+	get_color(cub3d);
 	mlx_mouse_move(cub3d->window, WIDTH / 2, HEIGHT / 2);
 	mlx_mouse_hide();
 	cub3d->image.images = mlx_new_image(cub3d->mlx, WIDTH, HEIGHT);

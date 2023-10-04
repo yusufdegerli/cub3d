@@ -101,7 +101,7 @@ void	frame_calc(t_cub3d *cub3d)
 			unsigned int color;
 			int	tex;
 			for (; ctt < math->drawstart; ctt++)
-				put_pxl_to_img(cub3d, ct, ctt, 0x00000060);
+				put_pxl_to_img(cub3d, ct, ctt, create_trgb(0, cub3d->sky.r, cub3d->sky.g, cub3d->sky.b));
 			for (;ctt < math->drawend; ctt++)
 			{
 				tex = (int) math->texpos & (TEXTHEIGHT - 1);
@@ -118,6 +118,6 @@ void	frame_calc(t_cub3d *cub3d)
 				put_pxl_to_img(cub3d, ct, ctt, color);
 			}
 			for (; ctt < HEIGHT; ctt++)
-				put_pxl_to_img(cub3d, ct, ctt, 0xAAAAFF);
+				put_pxl_to_img(cub3d, ct, ctt, create_trgb(0, cub3d->floor.r, cub3d->floor.g, cub3d->floor.b));
 	}
 }
