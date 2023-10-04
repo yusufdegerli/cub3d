@@ -6,7 +6,7 @@
 /*   By: okandemi <okandemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:23:00 by ydegerli          #+#    #+#             */
-/*   Updated: 2023/10/04 13:57:26 by okandemi         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:35:05 by okandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 int	data_chck(char *file_name, t_cub3d *cub3d)//map dosyalarındaki datalarda eğer fazla boşluk varsa seg YİYEBİLİR. !!!ÖNEMLİ NOT!!!
 {
-	if (!cub3d->map_info->west && ft_strncmp(file_name, "WE ", 3) == 0)
+	if (!cub3d->map_info->west && ft_strncmp(file_name, "WE .", 4) == 0)
 		cub3d->map_info->west = file_name;
-	else if (!cub3d->map_info->south && ft_strncmp(file_name, "SO ", 3) == 0)
+	else if (!cub3d->map_info->south && ft_strncmp(file_name, "SO .", 4) == 0)
 		cub3d->map_info->south = file_name;
-	else if (!cub3d->map_info->north && ft_strncmp(file_name, "NO  ", 3) == 0)
+	else if (!cub3d->map_info->north && ft_strncmp(file_name, "NO .", 4) == 0)
 		cub3d->map_info->north = file_name;
-	else if (!cub3d->map_info->east && ft_strncmp(file_name, "EA ", 3) == 0)
+	else if (!cub3d->map_info->east && ft_strncmp(file_name, "EA .", 4) == 0)
 		cub3d->map_info->east = file_name;
-	else if (!cub3d->map_info->c && ft_strncmp(file_name, "C ", 2) == 0)
+	else if (!cub3d->map_info->c && ft_strncmp(file_name, "C ", 2) == 0 && ft_isdigit(file_name[2]))
 		cub3d->map_info->c = file_name;
-	else if (!cub3d->map_info->f && ft_strncmp(file_name, "F ", 2) == 0)
+	else if (!cub3d->map_info->f && ft_strncmp(file_name, "F ", 2) == 0 && ft_isdigit(file_name[2]))
 		cub3d->map_info->f = file_name;
 	else
 		return (0);
@@ -77,7 +77,6 @@ int	ft_loop(t_cub3d *cub3d)
 		return (0);
 	mlx_mouse_get_pos(cub3d->window, &(cub3d->mouse->pos_x), \
 		&(cub3d->mouse->pos_y));
-	printf("hesap: x: %d  old: %d\n",cub3d->mouse->pos_x, cub3d->mouse->old_pos_x);
 	if (cub3d->mouse->pos_x - cub3d->mouse->old_pos_x != 0)
 		rotate_with_mouse(cub3d);
 	cub3d->mouse->old_pos_x = WIDTH / 2;

@@ -1,5 +1,13 @@
 #include "cub3d.h"
 
+unsigned int	get_pixel_in_tex(t_image tex, int x, int y)
+{
+	char	*dst;
+
+	dst = tex.data + (y * tex.sizeline + x * (tex.bpp / 8));
+	return (*((unsigned int *) dst));
+}
+
 void	frame_calc(t_cub3d *cub3d)
 {
 	int	ct;
@@ -78,8 +86,9 @@ void	frame_calc(t_cub3d *cub3d)
 				math->wall_x = cub3d->player->y + math->perpwalldist * math->raydir_y;//11
 			else
 				math->wall_x = cub3d->player->x + math->perpwalldist * math->raydir_x;
-			math->wall_x -= floor(math->wall_x);//0
-			math->tex_x = (int)math->wall_x * (double)TEXTWIDHT;//0
+			math->wall_x -=  floor(math->wall_x);//0
+			// printf("wall_x %f\n", math->wall_x);
+			math->tex_x = (double) (math->wall_x * TEXTWIDHT);//0
 			if(math->side == 0 && math->raydir_x > 0)//girmedi
 				math->tex_x = TEXTWIDHT - math->tex_x - 1;
 			if(math->side == 1 && math->raydir_y < 0)//girmedi
@@ -89,16 +98,26 @@ void	frame_calc(t_cub3d *cub3d)
 			int	ctt;
 
 			ctt = 0;
+			unsigned int color;
+			int	tex;
 			for (; ctt < math->drawstart; ctt++)
 				put_pxl_to_img(cub3d, ct, ctt, 0x00000060);
 			for (;ctt < math->drawend; ctt++)
 			{
-				int color = 0x00606000;
-				if (math->side == 1)
-					color /= 2;
-				put_pxl_to_img(cub3d, ct,ctt, color);
+				tex = (int) math->texpos & (TEXTHEIGHT - 1);
+				math->texpos += math->step;
+				//printf("texX: %f texY %d\n",math->tex_x, tex);
+				if (math->side == 0 && math->raydir_x > 0)
+					color = get_pixel_in_tex(cub3d->north,math->tex_x, tex);
+				if (math->side == 0 && math->raydir_x < 0)
+					color = get_pixel_in_tex(cub3d->south,math->tex_x, tex);
+				if (math->side == 1 && math->raydir_y > 0)
+					color = get_pixel_in_tex(cub3d->west, math->tex_x, tex);
+				if (math->side == 1 && math->raydir_y < 0)
+					color = get_pixel_in_tex(cub3d->east, math->tex_x, tex);
+				put_pxl_to_img(cub3d, ct, ctt, color);
 			}
 			for (; ctt < HEIGHT; ctt++)
-				put_pxl_to_img(cub3d, ct, ctt, 0x0000FF00);
+				put_pxl_to_img(cub3d, ct, ctt, 0xAAAAFF);
 	}
 }

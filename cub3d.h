@@ -6,7 +6,7 @@
 /*   By: okandemi <okandemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:17:57 by ydegerli          #+#    #+#             */
-/*   Updated: 2023/10/04 13:50:16 by okandemi         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:27:52 by okandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,8 @@ typedef struct s_math
 	int			drawstart;
 	int			drawend;
 	int			texnum;
-	int			wall_x;
-	int			tex_x;
+	double		wall_x;
+	double		tex_x;
 	double		step;
 	double		texpos;
 }		t_math;

@@ -6,7 +6,7 @@
 /*   By: okandemi <okandemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 14:59:24 by ydegerli          #+#    #+#             */
-/*   Updated: 2023/10/04 14:05:55 by okandemi         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:12:23 by okandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,18 @@ void	ft_newline_ctrl(t_cub3d *cub3d)
 	{
 		if (cub3d->file[i] == '\n' && cub3d->file[i + 1] == '\n')
 		{
-			printf("error: wrong map type\n");
-			free_map_info(cub3d);
-			free(cub3d->file);
-			system("leaks cub3D");
-			exit(1);
+			while (cub3d->file[++i] == '\n')
+				i++;
+			
+			if (cub3d->file[i] != '\0')
+			{
+				printf("error: wrong map type\n");
+				free_map_info(cub3d);
+				free(cub3d->file);
+				free(cub3d);
+				system("leaks cub3D");
+				exit(1);
+			}
 		}
 	}
 	cub3d->map = ft_split(cub3d->file, '\n');

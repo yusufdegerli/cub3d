@@ -6,7 +6,7 @@
 /*   By: okandemi <okandemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:13:02 by okandemi          #+#    #+#             */
-/*   Updated: 2023/10/04 13:57:15 by okandemi         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:25:22 by okandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,9 @@ void	rotate_with_mouse(t_cub3d *cub3d)
 	double	old_dir_x;
 	double	old_plane_x;
 	double	rot_x;
-	//printf("calisti\n");
+
 	rot_x = (double) -cub3d->move->rot_speed * ((cub3d->mouse->pos_x - \
 		cub3d->mouse->old_pos_x) / 10.0);
-	printf("rot: %f\n", rot_x);
-	//exit(1);
 	old_dir_x = cub3d->player->dir_x;
 	old_plane_x = cub3d->player->plane_x;
 	cub3d->player->dir_x = (double) (cub3d->player->dir_x * cos(rot_x) \
