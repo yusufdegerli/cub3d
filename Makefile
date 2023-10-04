@@ -1,4 +1,5 @@
-SRCS = main.c init.c free.c path_ctl.c map_ctl.c gnl/get_next_line.c gnl/get_next_line_utils.c \
+SRCS = main.c init.c free.c path_ctl.c player_ctl.c gnl/get_next_line.c gnl/get_next_line_utils.c \
+		putting_pxls_to_img.c math.c move.c move2.c draw.c key_press.c path_ctl2.c set_user.c
 
 OBJS = $(SRCS:.c=.o)
 CC = gcc
