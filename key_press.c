@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okandemi <okandemi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ydegerli <ydegerli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:18:50 by okandemi          #+#    #+#             */
-/*   Updated: 2023/10/04 12:21:09 by okandemi         ###   ########.fr       */
+/*   Updated: 2023/10/07 16:02:52 by ydegerli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	red_x_close(int keycode, t_cub3d *cub3d)
 {
 	printf("Closed Successfully!\n");
-	// system("leaks cub3d");
 	exit(0);
 	return (0);
 }
@@ -46,7 +45,6 @@ void	run_esc(t_cub3d *cub3d)
 	free_int_map(cub3d);
 	free_cub3d_map(cub3d);
 	free(cub3d);
-	system("leaks cub3D");
 	exit (0);
 }
 
@@ -71,8 +69,6 @@ int	key_press(int keycode, t_cub3d *cub3d)
 		move->rot_right = 1;
 	else if (keycode == PAUSE)
 	{
-		if (cub3d->lock)
-			draw_pause(cub3d, 0x000000);
 		mlx_mouse_move(cub3d->window, WIDTH / 2, HEIGHT / 2);
 		cub3d->lock = !cub3d->lock;
 	}

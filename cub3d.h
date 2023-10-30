@@ -6,7 +6,7 @@
 /*   By: okandemi <okandemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:17:57 by ydegerli          #+#    #+#             */
-/*   Updated: 2023/10/04 18:19:37 by okandemi         ###   ########.fr       */
+/*   Updated: 2023/10/07 14:54:06 by okandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,55 +152,61 @@ typedef struct s_cub3d
 	int			tmp_fd;
 }				t_cub3d;
 
-void	move(t_cub3d *cub3d);
-void	rot_left(t_cub3d *cub3d);
-void	move_right(t_cub3d *cub3d);
-void	move_left(t_cub3d *cub3d);
-void	move_back(t_cub3d *cub3d);
-void	move_forward(t_cub3d *cub3d);
-void	rot_right(t_cub3d *cub3d);
-void	rotate_with_mouse(t_cub3d *cub3d);
-void	draw_image(t_cub3d *cub3d);
-
-void	draw_pause(t_cub3d *cub3d, int color);
-void	draw_maze(t_cub3d *cub3d);
-void	put_mini_map_red_dot(t_cub3d *cub3d, int color);
-void	find_longest_line(t_cub3d *cub3d);
-void	find_line_count(t_cub3d *cub3d);
-
-int		red_x_close(int keycode, t_cub3d *cub3d);
-int		key_release(int keycode, t_cub3d *cub3d);
-int		key_press(int keycode, t_cub3d *cub3d);
-
-void	set_user(t_cub3d *cub3d, int i, int j);
-void	set_player_dir(t_cub3d *cub3d, int i, int j);
-
-int		is_user_zero(int c);
-void	init2(t_cub3d *cub3d);
-void	text_len(t_cub3d *cub3d);
-void	texture_ctl(t_cub3d *cub3d);
-void	free_int_map(t_cub3d *cub3d);
-void	ft_char_ctrl(t_cub3d *cub3d);
-void	free_map_info(t_cub3d *cub3d);
-void	free_cub3d_map(t_cub3d *cub3d);
-void	init(t_cub3d *cub3d, char *av);
-void	error_data_ctl(t_cub3d *cub3d);
-void	taking_pics(t_cub3d *cub3d);
-int		create_trgb(int t, int r, int g, int b);
-void	extension_ctl(char *extension);
-void	ft_newline_ctrl(t_cub3d *cub3d);
-void	draw_pause(t_cub3d *cub3d, int color);
-void	ft_player_position_ctrl(t_cub3d *cub3d);
-int		key_press(int keycode, t_cub3d *cub3d);
-void	err_data_ctl(char *str, t_cub3d *cub3d);
-void	frame_calc(t_cub3d *cub3d);;
-void	err_plyr_ctrl(char *str, t_cub3d *cub3d);
-int		red_x_close(int keycode, t_cub3d *cub3d);
-void	map_ctl(char *file_name, t_cub3d *cub3d);
-int		check_player(t_cub3d *vals, int i, int j);
-int		data_chck(char *file_name, t_cub3d *cub3d);
-char	*data_ctl(char *file_name, t_cub3d *cub3d);
-void	rebuild_map(char *file_name, t_cub3d *cub3d);
-void	put_pxl_to_img(t_cub3d *cub3d, int x, int y, int color);
-void	ft_player_pos(t_cub3d *cub3d, int i, int j, int player_count);
+unsigned int	get_pixel_in_tex(t_image tex, int x, int y);
+void			split_screen_two(t_cub3d *cub3d, t_math *math);
+void			calculating_rays(t_cub3d *cub3d, t_math *math);
+void			does_ray_hitting_wall(t_cub3d *cub3d, t_math *math);
+void			calculating_drawing_screen_and_fisheye_ctl(t_cub3d *cub3d, \
+t_math *math);
+void			drawing_screen(t_cub3d *cub3d, t_math *math);
+void			painting(t_cub3d *cub3d, int ct, int ctt, unsigned int color);
+void			frame_calc(t_cub3d *cub3d);;
+void			move(t_cub3d *cub3d);
+int				create_trgb(int t, int r, int g, int b);
+void			rot_left(t_cub3d *cub3d);
+void			move_right(t_cub3d *cub3d);
+void			move_left(t_cub3d *cub3d);
+void			move_back(t_cub3d *cub3d);
+void			get_color(t_cub3d *cub3d);
+void			color_ctl(t_cub3d *cub3d);
+void			move_forward(t_cub3d *cub3d);
+void			rot_right(t_cub3d *cub3d);
+void			rotate_with_mouse(t_cub3d *cub3d);
+void			draw_image(t_cub3d *cub3d);
+void			draw_pause(t_cub3d *cub3d, int color);
+void			draw_maze(t_cub3d *cub3d);
+void			put_mini_map_red_dot(t_cub3d *cub3d, int color);
+void			find_longest_line(t_cub3d *cub3d);
+void			find_line_count(t_cub3d *cub3d);
+int				red_x_close(int keycode, t_cub3d *cub3d);
+int				key_release(int keycode, t_cub3d *cub3d);
+int				key_press(int keycode, t_cub3d *cub3d);
+void			set_user(t_cub3d *cub3d, int i, int j);
+void			set_player_dir(t_cub3d *cub3d, int i, int j);
+int				is_user_zero(int c);
+void			init2(t_cub3d *cub3d);
+void			text_len(t_cub3d *cub3d);
+void			texture_ctl(t_cub3d *cub3d);
+void			free_int_map(t_cub3d *cub3d);
+void			ft_char_ctrl(t_cub3d *cub3d);
+void			free_map_info(t_cub3d *cub3d);
+void			free_cub3d_map(t_cub3d *cub3d);
+void			init(t_cub3d *cub3d, char *av);
+void			error_data_ctl(t_cub3d *cub3d);
+void			taking_pics(t_cub3d *cub3d);
+void			extension_ctl(char *extension);
+void			ft_newline_ctrl(t_cub3d *cub3d);
+void			draw_pause(t_cub3d *cub3d, int color);
+void			ft_player_position_ctrl(t_cub3d *cub3d);
+int				key_press(int keycode, t_cub3d *cub3d);
+void			err_data_ctl(char *str, t_cub3d *cub3d);
+void			err_plyr_ctrl(char *str, t_cub3d *cub3d);
+int				red_x_close(int keycode, t_cub3d *cub3d);
+void			map_ctl(char *file_name, t_cub3d *cub3d);
+int				check_player(t_cub3d *vals, int i, int j);
+int				data_chck(char *file_name, t_cub3d *cub3d);
+char			*data_ctl(char *file_name, t_cub3d *cub3d);
+void			rebuild_map(char *file_name, t_cub3d *cub3d);
+void			put_pxl_to_img(t_cub3d *cub3d, int x, int y, int color);
+void			ft_player_pos(t_cub3d *cub3d, int i, int j, int player_count);
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okandemi <okandemi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ydegerli <ydegerli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:16:00 by okandemi          #+#    #+#             */
-/*   Updated: 2023/10/04 15:04:05 by okandemi         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:25:22 by ydegerli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,8 @@ void	draw_maze(t_cub3d *cub3d)
 				{
 					l = -1;
 					while (++l < cub3d->length_y)
-					{	put_pxl_to_img(cub3d, (j * cub3d->length_x) + k, \
+						put_pxl_to_img(cub3d, (j * cub3d->length_x) + k, \
 						(i * cub3d->length_y) + l, 0xFFFFFF);
-						}
 				}
 			}
 		}

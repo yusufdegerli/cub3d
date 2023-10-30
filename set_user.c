@@ -6,7 +6,7 @@
 /*   By: okandemi <okandemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:30:37 by okandemi          #+#    #+#             */
-/*   Updated: 2023/10/03 19:20:21 by okandemi         ###   ########.fr       */
+/*   Updated: 2023/10/07 14:48:04 by okandemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	set_player_dir(t_cub3d *cub3d, int i, int j)
 	else if (cub3d->map[i][j] == 'E')
 	{
 		cub3d->player->dir_x = 1.0;
-		cub3d->player->plane_y = 0.66;
+		cub3d->player->plane_y = -0.66;
 	}
 	else if (cub3d->map[i][j] == 'W')
 	{
 		cub3d->player->dir_x = -1.0;
-		cub3d->player->plane_y = -0.66;
+		cub3d->player->plane_y = 0.66;
 	}
 }
 

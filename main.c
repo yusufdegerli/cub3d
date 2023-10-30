@@ -6,7 +6,7 @@
 /*   By: ydegerli <ydegerli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:17:09 by ydegerli          #+#    #+#             */
-/*   Updated: 2023/10/03 14:54:01 by ydegerli         ###   ########.fr       */
+/*   Updated: 2023/10/07 18:20:03 by ydegerli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,15 @@ void	extension_ctl(char *extension)
 		if (tmp[len - 1] != 'b' || tmp[len - 2] != 'u'
 			|| tmp[len - 3] != 'c' || tmp[len - 4] != '.')
 		{
-			perror("Error! The map extension must be .cub!\n");
 			free(tmp);
-			exit (1);
+			exit (printf("Error! The map extension must be .cub!\n"));
 		}
 		free(tmp);
 	}
 	else
 	{
-		perror("Error! The map extension must be .cub!2\n");
 		free(tmp);
-		exit (1);
+		exit (printf("Error! The map extension must be .cub!\n"));
 	}
 }
 
@@ -48,10 +46,7 @@ int	main(int ac, char **av)
 	if (!av)
 		return (0);
 	if (ac != 2)
-	{
-		perror("Error! Wrong using arguments\n");
-		return (1);
-	}
+		return (printf("Error! Wrong using arguments\n"));
 	extension_ctl(av[1]);
 	init(cub3d, av[1]);
 	return (0);

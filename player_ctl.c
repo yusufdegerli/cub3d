@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_ctl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okandemi <okandemi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ydegerli <ydegerli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 14:59:24 by ydegerli          #+#    #+#             */
-/*   Updated: 2023/10/04 18:06:05 by okandemi         ###   ########.fr       */
+/*   Updated: 2023/10/07 17:57:04 by ydegerli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	ft_newline_ctrl(t_cub3d *cub3d)
 				free_map_info(cub3d);
 				free(cub3d->file);
 				free(cub3d);
-				system("leaks cub3D");
 				exit(1);
 			}
 		}
@@ -103,7 +102,11 @@ char	*data_ctl(char *file_name, t_cub3d *cub3d)
 	cub3d->fd = open(file_name, O_RDONLY);
 	error_data_ctl(cub3d);
 	cub3d->map_info = ft_calloc(sizeof(t_MapInfo), 1);
+	if (!cub3d->map_info)
+		exit (printf("ERROR: MALLOC\n"));
 	file_name = get_next_line(cub3d->fd);
+	if (!file_name)
+		exit(printf("ERROR: FILE DOES NOT FOUND\n"));
 	while (1)
 	{
 		if (file_name && data_chck(file_name, cub3d) == 1)
@@ -114,11 +117,8 @@ char	*data_ctl(char *file_name, t_cub3d *cub3d)
 			free(file_name);
 		file_name = get_next_line(cub3d->fd);
 	}
-	if (ct != 6)
-		err_data_ctl("ERROR! Missing some information in the map file!!!\n"\
-		, cub3d);
-	if (!file_name)
-		err_data_ctl("ERROR! Map not found in the map file!!!\n", cub3d);
+	if (ct != 6 || !file_name)
+		err_data_ctl("ERROR! Wrong information in the map file!!!\n", cub3d);
 	texture_ctl(cub3d);
 	return (file_name);
 }

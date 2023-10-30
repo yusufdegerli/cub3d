@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   putting_pxls_to_img.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okandemi <okandemi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ydegerli <ydegerli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 19:15:58 by okandemi          #+#    #+#             */
-/*   Updated: 2023/10/03 19:19:50 by okandemi         ###   ########.fr       */
+/*   Updated: 2023/10/07 18:07:01 by ydegerli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	taking_pics(t_cub3d *cub3d)
 			cub3d->map_info->east, &(cub3d->east.w), &(cub3d->east.h));
 	if (!cub3d->north.images || !cub3d->south.images
 		|| !cub3d->west.images || !cub3d->east.images)
-		exit(printf("HATA! img oluşturulmadı. *geçiçi hata mesajı*\n"));//Hata mesajı yazdırılacak.
+		exit(printf("ERROR: IMAGE DOES NOT OPEN\n"));
 	cub3d->north.data = mlx_get_data_addr(cub3d->north.images, \
 		&(cub3d->north.bpp), &(cub3d->north.sizeline), &(cub3d->north.endian));
 	cub3d->south.data = mlx_get_data_addr(cub3d->south.images, \

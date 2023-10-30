@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okandemi <okandemi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ydegerli <ydegerli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:22:21 by ydegerli          #+#    #+#             */
-/*   Updated: 2023/10/03 18:17:06 by okandemi         ###   ########.fr       */
+/*   Updated: 2023/10/07 16:02:23 by ydegerli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	err_data_ctl(char *str, t_cub3d *cub3d)
 	free_map_info(cub3d);
 	free(cub3d);
 	printf("%s", str);
-	// system("leaks cub3D");
 	exit (1);
 }
 
@@ -37,7 +36,6 @@ void	err_plyr_ctrl(char *str, t_cub3d *cub3d)
 	free_map_info(cub3d);
 	free_cub3d_map(cub3d);
 	free(cub3d);
-	// system("leaks cub3D");
 	exit (1);
 }
 
@@ -45,9 +43,8 @@ void	error_data_ctl(t_cub3d *cub3d)
 {
 	if (cub3d->fd < 3)
 	{
-		printf("ERROR: Map cannot open\n");
 		free(cub3d);
-		exit (1);
+		exit (printf("ERROR: Map cannot open\n"));
 	}
 }
 
