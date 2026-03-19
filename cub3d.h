@@ -14,9 +14,8 @@
 # define CUB3D_H
 
 # include "libft/libft.h"
-# include "mlxlib/mlx.h"
-# include "gnl/get_next_line.h"
-# include "gnl/get_next_line_bonus.h"
+# include "minilibx-linux/mlx.h"
+# include "gnl/get_next_line/get_next_line.h"
 # include <stdio.h>
 # include <math.h>
 # include <fcntl.h>
@@ -25,14 +24,14 @@
 # define HEIGHT 600
 # define TEXTWIDHT 64
 # define TEXTHEIGHT 64
-# define ESC 53
-# define W 13
-# define A 0
-# define S 1
-# define D 2
-# define L_AR 123
-# define R_AR 124
-# define PAUSE 35
+# define ESC 65307
+# define W 119
+# define A 97
+# define S 115
+# define D 100
+# define L_AR 65361
+# define R_AR 65363
+# define PAUSE 112
 
 typedef struct s_image
 {

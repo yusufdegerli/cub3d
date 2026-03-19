@@ -16,7 +16,6 @@ void	color_ctl(t_cub3d *cub3d)
 {
 	int		i;
 	char	c;
-
 	i = -1;
 	while (cub3d->map_info->c[++i] && cub3d->map_info->c[i] != '\n')
 	{
@@ -37,12 +36,13 @@ void	free_get_color(t_cub3d *cub3d, char **a)
 {
 	int	i;
 	int	knt;
+	(void)cub3d;
 
 	i = 0;
 	knt = 0;
 	while (a[i])
 		i++;
-	if (a[i - 1][0] == 10)
+	if (i > 0 && a[i - 1][0] == 10)
 		knt = 1;
 	i = -1;
 	while (a[++i] && !knt)

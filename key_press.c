@@ -14,6 +14,8 @@
 
 int	red_x_close(int keycode, t_cub3d *cub3d)
 {
+	(void)keycode;
+	(void)cub3d;
 	printf("Closed Successfully!\n");
 	exit(0);
 	return (0);
@@ -69,7 +71,7 @@ int	key_press(int keycode, t_cub3d *cub3d)
 		move->rot_right = 1;
 	else if (keycode == PAUSE)
 	{
-		mlx_mouse_move(cub3d->window, WIDTH / 2, HEIGHT / 2);
+		mlx_mouse_move(cub3d->mlx, cub3d->window, WIDTH / 2, HEIGHT / 2);
 		cub3d->lock = !cub3d->lock;
 	}
 	return (0);

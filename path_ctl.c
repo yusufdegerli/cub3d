@@ -57,9 +57,6 @@ void	map_char_to_int(t_cub3d *cub3d)
 
 void	map_ctl(char *file_name, t_cub3d *cub3d)
 {
-	int	len;
-
-	len = 0;
 	file_name = data_ctl(file_name, cub3d);
 	rebuild_map(file_name, cub3d);
 	cub3d->move = (t_move *) ft_calloc(sizeof(t_move), 1);

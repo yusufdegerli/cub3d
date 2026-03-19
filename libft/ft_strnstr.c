@@ -37,11 +37,3 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (0);
 }
-/*#include <stdio.h>
-int main ()
-{
-	char yusuf[] = "Ramazan Yusufffdkjkjkhjfhjkf";
-	char arama[] = "Yusuf";
-	printf ("%s", ft_strnstr(yusuf , arama, 13));
-}*/
-hello world lo 

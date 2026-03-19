@@ -13,9 +13,6 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	int	i;
-
-	i = 0;
 	if (!s)
 		return ;
 	while (*s != '\0')
@@ -25,15 +22,3 @@ void	ft_putendl_fd(char *s, int fd)
 	}
 	write(fd, "\n", 1);
 }
-/*int main()
-{
-    int i;
-    i = 0;
-    while(i < 3)
-    {
-        write(0, "input", 5);
-        write(1, "output", 6);
-        write(2, "error", 5);
-        i++;
-    }
-}*/

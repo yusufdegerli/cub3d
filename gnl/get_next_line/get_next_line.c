@@ -14,11 +14,9 @@
 
 char	*scan(int fd, char *s)
 {
-	int		i;
 	char	*l;
 	int		lw;
 
-	i = 0;
 	l = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!l)
 		return (NULL);

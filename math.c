@@ -62,6 +62,7 @@ void	calculating_drawing_screen_and_fisheye_ctl(t_cub3d *cub3d, t_math *math)
 
 void	drawing_screen(t_cub3d *cub3d, t_math *math)
 {
+	(void)cub3d;
 	math->tex_x = TEXTWIDHT - math->tex_x - 1;
 	math->step = 1.0 * TEXTHEIGHT / math->lineheight;
 	math->texpos = \
@@ -105,6 +106,7 @@ void	frame_calc(t_cub3d *cub3d)
 	unsigned int	color;
 
 	ct = -1;
+	color = 0;
 	math = &(cub3d->math);
 	while (++ct < WIDTH)
 	{

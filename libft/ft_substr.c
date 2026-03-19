@@ -28,15 +28,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	{
 		if (i >= start && j < len)
 			new[j++] = s[i];
-			i++;
+		i++;
 	}
 	new[j] = '\0';
 	return (new);
 }
-/*
-#include <stdio.h>
-int main()
-{
-	char yusuf[] = "Merhabafghjhejskhjrnslgjwlxdjgmek";
-	printf("%s", ft_substr(yusuf, 3, 8));
-}*/

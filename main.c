@@ -43,6 +43,7 @@ int	main(int ac, char **av)
 {
 	t_cub3d	*cub3d;
 
+	cub3d = NULL;
 	if (!av)
 		return (0);
 	if (ac != 2)

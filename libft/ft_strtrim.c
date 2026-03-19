@@ -37,11 +37,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 		j--;
 	return (ft_substr(s1, i, j - i + 1));
 }
-/*#include <stdio.h>
-int main()
-{
-	char yusuf[] = "asdasdasdkelasdsadsa";
-	char kes[] = "asd";
-	printf("%s", ft_strtrim(yusuf, kes));
-}*/
-asdas asd asd a sad as ugur ihsan asdd asd , "asd "

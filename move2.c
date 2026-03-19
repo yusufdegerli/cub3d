@@ -37,7 +37,7 @@ void	rotate_with_mouse(t_cub3d *cub3d)
 	double	rot_x;
 
 	rot_x = (double) -cub3d->move->rot_speed * ((cub3d->mouse->pos_x - \
-		cub3d->mouse->old_pos_x) / 10.0);
+		cub3d->mouse->old_pos_x) / 40.0);
 	old_dir_x = cub3d->player->dir_x;
 	old_plane_x = cub3d->player->plane_x;
 	cub3d->player->dir_x = (double)(cub3d->player->dir_x * cos(rot_x) \
@@ -48,7 +48,7 @@ void	rotate_with_mouse(t_cub3d *cub3d)
 		- cub3d->player->plane_y * sin(rot_x);
 	cub3d->player->plane_y = (double) old_plane_x * sin(rot_x) + \
 		cub3d->player->plane_y * cos(rot_x);
-	mlx_mouse_move(cub3d->window, WIDTH / 2, HEIGHT / 2);
+	mlx_mouse_move(cub3d->mlx, cub3d->window, WIDTH / 2, HEIGHT / 2);
 }
 
 void	move(t_cub3d *cub3d)

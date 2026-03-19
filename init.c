@@ -59,11 +59,11 @@ int	lock_cntrl(t_cub3d *cub3d)
 		cub3d->image.images, 0, 0);
 	if (cub3d->lock)
 	{
-		mlx_mouse_show();
+		mlx_mouse_show(cub3d->mlx, cub3d->window);
 		draw_pause(cub3d, 0x00AAFF);
 		return (1);
 	}
-	mlx_mouse_hide();
+	mlx_mouse_hide(cub3d->mlx, cub3d->window);
 	if ((cub3d->move->forward || cub3d->move->backward) \
 		&& (cub3d->move->left || cub3d->move->right))
 		cub3d->move->speed = 0.06 / sqrt(2);
@@ -76,7 +76,7 @@ int	ft_loop(t_cub3d *cub3d)
 {
 	if (lock_cntrl(cub3d))
 		return (0);
-	mlx_mouse_get_pos(cub3d->window, &(cub3d->mouse->pos_x), \
+	mlx_mouse_get_pos(cub3d->mlx, cub3d->window, &(cub3d->mouse->pos_x), \
 		&(cub3d->mouse->pos_y));
 	if (cub3d->mouse->pos_x - cub3d->mouse->old_pos_x != 0)
 		rotate_with_mouse(cub3d);
@@ -98,6 +98,8 @@ void	init(t_cub3d *cub3d, char *av)
 		exit(printf("ERROR: MALLOC\n"));
 	map_ctl(av, cub3d);
 	cub3d->mlx = mlx_init();
+	if (!cub3d->mlx)
+		exit(printf("ERROR: MLX INIT FAILED! Check your X11/DISPLAY settings.\n"));
 	cub3d->window = mlx_new_window(cub3d->mlx, WIDTH, HEIGHT, "Cub3D");
 	get_color(cub3d);
 	taking_pics(cub3d);
@@ -106,15 +108,15 @@ void	init(t_cub3d *cub3d, char *av)
 	cub3d->move->rot_speed = (double) 0.04;
 	cub3d->mouse->old_pos_x = WIDTH / 2;
 	cub3d->mouse->old_pos_y = HEIGHT / 2;
-	mlx_mouse_move(cub3d->window, WIDTH / 2, HEIGHT / 2);
-	mlx_mouse_hide();
+	mlx_mouse_move(cub3d->mlx, cub3d->window, WIDTH / 2, HEIGHT / 2);
+	mlx_mouse_hide(cub3d->mlx, cub3d->window);
 	cub3d->image.images = mlx_new_image(cub3d->mlx, WIDTH, HEIGHT);
 	cub3d->image.data = mlx_get_data_addr(cub3d->image.images, \
 		&(cub3d->image.bpp), &(cub3d->image.sizeline), &(cub3d->image.endian));
 	draw_image(cub3d);
-	mlx_hook(cub3d->window, 2, 0, key_press, cub3d);
-	mlx_hook(cub3d->window, 3, 0, key_release, cub3d);
-	mlx_hook(cub3d->window, 17, 1L << 2, red_x_close, cub3d);
+	mlx_hook(cub3d->window, 2, 1L << 0, key_press, cub3d);
+	mlx_hook(cub3d->window, 3, 1L << 1, key_release, cub3d);
+	mlx_hook(cub3d->window, 17, 0, red_x_close, cub3d);
 	mlx_loop_hook(cub3d->mlx, &ft_loop, cub3d);
 	mlx_loop(cub3d->mlx);
 }

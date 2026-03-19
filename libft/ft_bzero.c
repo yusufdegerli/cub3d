@@ -22,11 +22,3 @@ void	ft_bzero(void *s, size_t n)
 		i++;
 	}
 }
-/*
-#include <stdio.h>
-int main ()
-{
-}*/
-
-
-ftbzero(256,4)

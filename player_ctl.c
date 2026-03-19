@@ -74,8 +74,8 @@ void	ft_player_pos(t_cub3d *cub3d, int i, int j, int player_count)
 				cub3d->map[i - 1][j] == ' ' || cub3d->map[i + 1][j] == ' '))
 				err_plyr_ctrl("ERROR: Map is not close with walls!\n", cub3d);
 			else if (is_user_zero(cub3d->map[i][j]) && (
-				ft_strlen(cub3d->map[i - 1]) - 1 < j || \
-				ft_strlen(cub3d->map[i + 1]) - 1 < j))
+				ft_strlen(cub3d->map[i - 1]) - 1 < (size_t)j || \
+				ft_strlen(cub3d->map[i + 1]) - 1 < (size_t)j))
 				err_plyr_ctrl("ERROR: Map is not close with walls!\n", cub3d);
 			player_count = check_player(cub3d, i, j);
 		}
@@ -87,11 +87,7 @@ void	ft_player_pos(t_cub3d *cub3d, int i, int j, int player_count)
 
 void	ft_player_position_ctrl(t_cub3d *cub3d)
 {
-	int	i;
-	int	j;
-	int	player_count;
-
-	ft_player_pos(cub3d, i, j, player_count);
+	ft_player_pos(cub3d, 0, 0, 0);
 }
 
 char	*data_ctl(char *file_name, t_cub3d *cub3d)

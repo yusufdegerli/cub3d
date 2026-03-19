@@ -50,7 +50,7 @@ void	find_longest_line(t_cub3d *cub3d)
 	cub3d->max_line = ft_strlen(cub3d->map[0]);
 	while (cub3d->map[++i])
 	{
-		if (ft_strlen(cub3d->map[i]) > cub3d->max_line)
+		if (ft_strlen(cub3d->map[i]) > (size_t)cub3d->max_line)
 			cub3d->max_line = ft_strlen(cub3d->map[i]);
 	}
 }

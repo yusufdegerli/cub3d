@@ -69,7 +69,7 @@ void	draw_image(t_cub3d *cub3d)
 	{
 		j = -1;
 		while (++j < HEIGHT)
-			mlx_pixel_put(cub3d->mlx, cub3d->image.images, i, j, 0x0000FF);
+			put_pxl_to_img(cub3d, i, j, 0x0000FF);
 	}
 }
 
